@@ -18,6 +18,9 @@
     "node:cucumber": "node ./cypress/cucumber-html-reports.js",
     "cypress:parallel": "npm run report:clean && cypress-parallel -d 'cypress/e2e/**/*.feature' -t $threads -s test:cypress -m false",
     "test:cucumber": "npm run clean:cucumber && npm run cypress:parallel || node embedScreenshots.js && npm run node:cucumber || npm run node:cucumber",
+    "upload:reports": "node upload-reports.js",
+    "upload:zip": "node upload-reports.js",
+    "test:upload": "npm run test && npm run upload:reports",
     "build": "zip -r package.zip cypress/ cypress.config.js package.json Dockerfile docker-compose.yaml reportServer.pem reportServer.sh test.done README.md"
   },
   "author": "",
@@ -32,9 +35,11 @@
     "faker": "^5.5.3",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
+    "googleapis": "^161.0.0",
     "lighthouse": "^8.6.0",
     "multiple-cucumber-html-reporter": "^3.0.1",
     "mysql": "^2.18.1",
+    "nodemailer": "^7.0.6",
     "xml2js": "^0.6.2",
     "yarn": "^1.22.11"
   },

@@ -9,7 +9,6 @@
 // You can read more here:
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
-/// <reference types="@shelex/cypress-allure-plugin" />
 const cucumber = require('cypress-cucumber-preprocessor').default;
 const { lighthouse, prepareAudit, pa11y } = require('cypress-audit');
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
@@ -132,7 +131,6 @@ module.exports = (on, config) => {
     }
   });
 
-  allureWriter(on, config);
   return config;
 };
 

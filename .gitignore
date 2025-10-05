@@ -20,3 +20,4 @@ runner-results/
 browserDetails.json
 multi-reporter-config.json
 yarn.lock
+reports.zip
