@@ -92,38 +92,11 @@ async function zipFolder(folderPath, outputPath = null) {
  * @returns {Promise<string>} Path to the created zip file
  */
 async function zipReportsFolder(outputPath = null) {
-    const reportsFolderPath = path.join(__dirname, 'cypress', 'reports', 'cucumber');
-    const defaultOutputPath = outputPath || path.join(__dirname, 'reports-backup.zip');
+    const reportsFolderPath = path.join(__dirname, '..', 'cypress', 'reports', 'cucumber');
+    const defaultOutputPath = outputPath || path.join(__dirname, '..', 'reports.zip');
 
     console.log('🚀 Zipping Cypress reports folder...');
     return await zipFolder(reportsFolderPath, defaultOutputPath);
-}
-
-/**
- * Zip Allure reports folder
- * @param {string} outputPath - Optional output path for the zip file
- * @returns {Promise<string>} Path to the created zip file
- */
-async function zipAllureReportsFolder(outputPath = null) {
-    const allureReportsPath = path.join(__dirname, 'cypress', 'reports', 'allure-reports');
-    const defaultOutputPath = outputPath || path.join(__dirname, 'allure-reports.zip');
-
-    console.log('🎯 Zipping Allure reports folder...');
-    return await zipFolder(allureReportsPath, defaultOutputPath);
-}
-
-/**
- * Zip all reports (Cucumber + Allure)
- * @param {string} outputPath - Optional output path for the zip file
- * @returns {Promise<string>} Path to the created zip file
- */
-async function zipAllReportsFolder(outputPath = null) {
-    const allReportsPath = path.join(__dirname, 'cypress', 'reports');
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const defaultOutputPath = outputPath || path.join(__dirname, `all-reports-${timestamp}.zip`);
-
-    console.log('📊 Zipping all reports folder (Cucumber + Allure + Mocha)...');
-    return await zipFolder(allReportsPath, defaultOutputPath);
 }
 
 // Command line interface
@@ -148,4 +121,4 @@ if (require.main === module) {
     }
 }
 
-module.exports = { zipFolder, zipReportsFolder, zipAllureReportsFolder, zipAllReportsFolder };
+module.exports = { zipFolder, zipReportsFolder };
