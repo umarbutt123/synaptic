@@ -54,9 +54,9 @@ Then(/^I logout$/, () => {
   PortalHomePage.LogOut();
 });
 
-Then(/^I am able to validate proper message below field "([^"]*)" "([^"]*)"$/, (message, field) => {
+Then(/^I am able to validate proper message below field "([^"]*)"$/, (field) => {
   cy.debug('Validate message');
-  CommonUtilities.validateFieldMessage(message, field);
+  CommonUtilities.validateFieldMessage(field);
 });
 
 Then(/^I perform Hide all columns operation$/, () => {

@@ -173,14 +173,22 @@ class CommonUtilities {
 
   // verify input field alert message
 
-  static validateFieldMessage(message, field) {
+
+  // static validateFieldMessage(message, field) {
+  //   cy.log('validating field message');
+  //   cy.xpath(`//label[text()="${field}"]//..//p`).then((alert) => {
+
+  //     const text = alert.text();
+  //     cy.debug(text);
+  //     expect(text).to.contains(message);
+  //   });
+  // }
+
+  static validateFieldMessage(field) {
     cy.log('validating field message');
-    cy.xpath(`//label[text()="${field}"]//..//p`).then((alert) => {
-      const text = alert.text();
-      cy.debug(text);
-      expect(text).to.contains(message);
-    });
+    cy.xpath(`//small[text()='${field} is required']`).should('be.visible');
   }
+
 
   // hide all columns
 
