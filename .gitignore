@@ -21,3 +21,9 @@ browserDetails.json
 multi-reporter-config.json
 yarn.lock
 reports.zip
+
+# Google Drive API credentials and tokens
+upload-file/credentials.json
+upload-file/token.json
+**/credentials.json
+**/token.json
