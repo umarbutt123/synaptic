@@ -21,3 +21,5 @@ browserDetails.json
 multi-reporter-config.json
 yarn.lock
 reports.zip
+credentials.json
+token.json
