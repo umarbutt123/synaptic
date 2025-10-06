@@ -16,14 +16,16 @@ class CreateNewResellerRolePage {
 
   static navigateToAddRolePageUsingUrl() {
     cy.log("Navigate to manage roles page");
-    // cy.intercept('GET', 'api/dms/v1/resellers/resellerChildren/*').as('getResellerChildren');
+    cy.intercept('GET', 'api/Role/get-by-company-id*').as('getCompanyId');
     cy.visit(URL_PATH.role, { timeout: ELEMENT_TIMEOUT });
-    // cy.wait('@getResellerChildren');
+    cy.wait('@getCompanyId');
   };
 
   static clickOnAddNewRoleButton() {
     cy.log('click on add new role button');
+    cy.intercept('GET', 'api/Role/GetRoleDropDownData*').as('gerRoleData');
     cy.xpath(ADD_NEW_ROLE_BUTTON, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait('@gerRoleData');
   }
 
   static fillRoleName(name) {

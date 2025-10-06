@@ -1,11 +1,5 @@
 const USER_NAME_FIELD = "//span[@class='company-name']";
-const LOGOUT_FIELD = "//li[contains(text(),'Logout') or contains(text(),'Deconnecter')]";
-const CLICK_USERNAME = "//div[@id='seamless-unified-toolbar']/button[@type='button'][2]";
-const CLICK_CHANGE_PASSWORD = "//li[text()='Change Password']";
-const ENTER_OLD_PASSWORD = "//input[@name='oldPassword']";
-const ENTER_NEW_PASSWORD = "//input[@name='newPassword']";
-const ENTER_CONFIRM_PASSWORD = "//input[@name='confirmPassword']";
-const CLICK_UPDATE_BUTTON = "//button/span[text()='Update']";
+const LOGOUT_FIELD = "//a[@ptooltip='Logout']";
 const USERNAME = "(//input[@id= 'userId'])[1]";
 const PASSWORD = "//*[@id='password']";
 // const LOGIN_BUTTON = "//*[@id='login-form-submit-button']/span[1]";
@@ -39,12 +33,7 @@ class PortalHomePage {
   }
 
   static LogOut() {
-    cy.intercept("POST", "logout").as("logout");
-    cy.xpath(CLICK_USERNAME, { timeout: ELEMENT_TIMEOUT })
-      .should('be.visible')
-      .click({ force: true });
     cy.logout(LOGOUT_FIELD);
-    cy.wait("@logout");
   }
 
   static clickChangePassword() {

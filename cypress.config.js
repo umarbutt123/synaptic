@@ -46,7 +46,7 @@ module.exports = defineConfig({
       "user": "refill",
       "password": "refill"
     },
-    "TAGS": "@login"
+    "TAGS": "@role"
   },
   "e2e": {
     "specPattern": "**/*.feature",

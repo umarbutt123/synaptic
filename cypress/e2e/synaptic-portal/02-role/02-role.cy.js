@@ -11,13 +11,11 @@ import rolePage from '../../../pages/synaptic-portal/role/create_new_role_page';
 
 And(/^I navigate to the Role Page$/, () => {
   rolePage.navigateToAddRolePageUsingUrl();
-  cy.wait(3000);
-  // rolePage.navigateToAddRolePageUsingUrl();
+
 });
 
 And(/^I click on add new role button$/, () => {
   rolePage.clickOnAddNewRoleButton();
-  cy.wait(2000);
 });
 
 When(/^I perform Create Role having following parameters "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)"$/, (roleName, roleDescription, status, roleModule, screen, feature, permission) => {
@@ -35,5 +33,6 @@ When(/^I perform Create Role having following parameters "([^"]*)" "([^"]*)" "([
   rolePage.selectFeature(feature);
   cy.log("Select role permission")
   rolePage.selectPermission(permission);
+  cy.log("Click on submit button")
   rolePage.clicOnSubmit();
 });
