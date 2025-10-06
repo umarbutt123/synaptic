@@ -8,12 +8,12 @@ const emailConfig = {
    secure: true, // Use SSL connection (port 465)
 
    // Email Credentials
-   user: 'umarb41@gmail.com',
-   password: 'cywdgnafqztguecy', // Use app-specific password for Gmail
+   user: '',
+   // password: 'cywdgnafqztguecy', // Use app-specific password for Gmail
 
    // Email Content
-   from: 'umarb41@gmail.com',
-   to: 'muhammadumar.butt@seamless.se',
+   from: '',
+   to: '',
    // to: 'ayeshaishfaqkiani@gmail.com',
    subject: 'Synaptic Test Reports Automation',
    text: 'Hello,\n\nThis email contains our latest Synaptic test reports link Uploaded on Google Drive.\nThe zip file includes HTML reports and test results.\n https://drive.google.com/drive/u/1/folders/1gJiIttHKrR0atufSF89wiNTNpyIbNKLR. \n\nBest regards,\nTest Automation Team'
