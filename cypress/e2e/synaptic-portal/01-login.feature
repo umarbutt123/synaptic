@@ -21,7 +21,7 @@ Feature: 01-Login Feature
         Then I am able to validate proper message <MESSAGE>
         Examples:
             | EMAIL                               | PASSWORD    | MESSAGE               |
-            | "croubayinoullaae-3277@yopmail.com" | "Test@1234" | "Invalid credentials" |
+            | "croubayinoullaae-3277@yopmail.com" | "Test@1234" | "Invalid Credentials" |
 
     @login
     Scenario Outline: Performing login operation with passing invalid password as data table
@@ -29,12 +29,12 @@ Feature: 01-Login Feature
         Then I am able to validate proper message <MESSAGE>
         Examples:
             | EMAIL                             | PASSWORD     | MESSAGE               |
-            | "croubayinoulle-3277@yopmail.com" | "Test@12345" | "Invalid credentials" |
+            | "croubayinoulle-3277@yopmail.com" | "Test@12345" | "Invalid Credentials" |
 
     @login
     Scenario Outline: Performing login operation with blank username field as data table
         When Provide <EMAIL> and login into system with blank userId
         Then I validate Login button is disabled
         Examples:
-            | EMAIL                             | PASSWORD | MESSAGE               |
-            | "croubayinoulle-3277@yopmail.com" | ""       | "Invalid credentials" |
+            | EMAIL                             | PASSWORD |
+            | "croubayinoulle-3277@yopmail.com" | ""       |

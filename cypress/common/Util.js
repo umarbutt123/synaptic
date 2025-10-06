@@ -1,5 +1,5 @@
 // const MESSAGE_ALERT = '//div[@id="notistack-snackbar"]';
-const MESSAGE_ALERT = "//div[contains(text(),'Invalid credentials')]"
+// const MESSAGE_ALERT = "//div[contains(text(),'Invalid Credentials')]"
 const FILTER = "//span[@class='MuiButton-label' and contains(text(),'Filters')]";
 const COLUMN_SELECT = "//select[@id='columns-filter-select']";
 const OPERATOR_SELECT = "//select[@id='columns-operators-select']";
@@ -22,7 +22,7 @@ class CommonUtilities {
 
   static validateMessage(message) {
     // cy.log('validating message', message);
-    cy.xpath(MESSAGE_ALERT, { timeout: 10000 }).then((alert) => {
+    cy.xpath(`//div[contains(text(),'${message}')]`, { timeout: 10000 }).then((alert) => {
       const text = alert.text();
       expect(text).to.contains(message);
     });
