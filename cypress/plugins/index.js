@@ -47,7 +47,7 @@ module.exports = (on, config) => {
   //   password : 'refill'
   // }
   // modify env var value
-  config.env.db.host = config.env.host;
+  // config.env.db.host = config.env.host;
 
   on('file:preprocessor', cucumber());
   // `on` is used to hook into various events Cypress emits

@@ -40,12 +40,6 @@ module.exports = defineConfig({
     "accessibility": 50,
     "performance": 5,
     "seo": 10,
-    "host": "10.10.4.195",
-    "db": {
-      "host": "10.10.4.195",
-      "user": "refill",
-      "password": "refill"
-    },
     "TAGS": "@role"
   },
   "e2e": {

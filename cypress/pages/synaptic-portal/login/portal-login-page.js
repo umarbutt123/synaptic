@@ -13,10 +13,12 @@ class PortalLoginPage {
 
   static login(username, password) {
     cy.wait(1000);
+    cy.intercept('POST', 'api/Account/LogIn').as('login');
     cy.xpath(USER_ID_FIELD, { timeout: ELEMENT_TIMEOUT }).clear().type(username);
     cy.xpath(PASSWORD_FIELD, { timeout: ELEMENT_TIMEOUT }).clear().type(password);
     cy.xpath(ACCEPT_TERMS, { timeout: ELEMENT_TIMEOUT }).click();
     cy.xpath(LOGIN_BUTTON, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait('@login');
   }
 
   static loginWithBlankCredentials(username) {

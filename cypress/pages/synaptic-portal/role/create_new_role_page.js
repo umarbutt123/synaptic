@@ -47,23 +47,30 @@ class CreateNewResellerRolePage {
   }
 
   static selectModule(roleModule) {
-    cy.xpath(CLICK_ROLE_MODULE, { timeout: ELEMENT_TIMEOUT }).click();
-    cy.xpath(`//p-dropdownitem//li[normalize-space()='${roleModule}']`, { timeout: ELEMENT_TIMEOUT }).click();
-
+    if (roleModule !== "") {
+      cy.xpath(CLICK_ROLE_MODULE, { timeout: ELEMENT_TIMEOUT }).click();
+      cy.xpath(`//p-dropdownitem//li[normalize-space()='${roleModule}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    }
   }
 
   static selectScreen(screen) {
-    cy.xpath(CLICK_ROLE_SCREEN, { timeout: ELEMENT_TIMEOUT }).click();
-    cy.xpath(`//p-dropdownitem//li[normalize-space()='${screen}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    if (screen !== "") {
+      cy.xpath(CLICK_ROLE_SCREEN, { timeout: ELEMENT_TIMEOUT }).click();
+      cy.xpath(`//p-dropdownitem//li[normalize-space()='${screen}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    }
   }
 
   static selectFeature(feature) {
-    cy.xpath(CLICK_ROLE_FEATURE, { timeout: ELEMENT_TIMEOUT }).click();
-    cy.xpath(`//p-dropdownitem//li[normalize-space()='${feature}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    if (feature !== "") {
+      cy.xpath(CLICK_ROLE_FEATURE, { timeout: ELEMENT_TIMEOUT }).click();
+      cy.xpath(`//p-dropdownitem//li[normalize-space()='${feature}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    }
   }
   static selectPermission(permission) {
-    cy.xpath(CLICK_ROLE_PERMISSION, { timeout: ELEMENT_TIMEOUT }).click();
-    cy.xpath(`//p-dropdownitem//li[normalize-space()='${permission}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    if (permission !== "") {
+      cy.xpath(CLICK_ROLE_PERMISSION, { timeout: ELEMENT_TIMEOUT }).click();
+      cy.xpath(`//p-dropdownitem//li[normalize-space()='${permission}']`, { timeout: ELEMENT_TIMEOUT }).click();
+    }
   }
 
   static clicOnSubmit() {
