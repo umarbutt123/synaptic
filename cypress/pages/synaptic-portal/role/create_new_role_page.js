@@ -30,7 +30,8 @@ class CreateNewResellerRolePage {
 
   static fillRoleName(name) {
     if (name !== "") {
-      cy.xpath(ROLE_NAME, { timeout: ELEMENT_TIMEOUT }).clear().type(name);
+      const randomNum = Math.floor(Math.random() * 11);
+      cy.xpath(ROLE_NAME, { timeout: ELEMENT_TIMEOUT }).clear().type(name + randomNum);
     }
   }
 
@@ -75,6 +76,10 @@ class CreateNewResellerRolePage {
 
   static clicOnSubmit() {
     cy.xpath(BTN_SUBMIT, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
+  static clickEditRoleButton(roleName) {
+    cy.xpath(`//tr[td[contains(.,'${roleName}')]]//button[contains(.,'Edit')]`, { timeout: ELEMENT_TIMEOUT }).click();
   }
 
 

@@ -35,12 +35,11 @@ module.exports = defineConfig({
   "numTestsKeptInMemory": 0,
   "experimentalMemoryManagement": true,
   "env": {
-    "hostname": "10.10.4.195",
     "lighthouse": false,
     "accessibility": 50,
     "performance": 5,
     "seo": 10,
-    "TAGS": "@role"
+    "TAGS": "@role1"
   },
   "e2e": {
     "specPattern": "**/*.feature",
