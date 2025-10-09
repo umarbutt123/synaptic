@@ -40,3 +40,12 @@ When(/^I perform Create Role having following parameters "([^"]*)" "([^"]*)" "([
 When(/^I click on edit role button "([^"]*)"$/, (roleName) => {
   rolePage.clickEditRoleButton(roleName);
 });
+
+When(/^I perform Edit Role having following parameters "([^"]*)" "([^"]*)"$/, (roleName, roleDescription) => {
+  cy.log("Enter role name")
+  rolePage.editRoleName(roleName);
+  cy.log("Enter role description")
+  rolePage.fillRoleDescription(roleDescription);
+  cy.log("Click on submit button")
+  rolePage.clicOnSubmit();
+});

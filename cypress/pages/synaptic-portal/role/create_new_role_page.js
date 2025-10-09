@@ -35,6 +35,12 @@ class CreateNewResellerRolePage {
     }
   }
 
+  static editRoleName(name) {
+    if (name !== "") {
+      cy.xpath(ROLE_NAME, { timeout: ELEMENT_TIMEOUT }).clear().type(name);
+    }
+  }
+
   static fillRoleDescription(description) {
     if (description !== "") {
       cy.xpath(ROLE_DESCRIPTION, { timeout: ELEMENT_TIMEOUT }).clear().type(description);
@@ -79,7 +85,7 @@ class CreateNewResellerRolePage {
   }
 
   static clickEditRoleButton(roleName) {
-    cy.xpath(`//tr[td[contains(.,'${roleName}')]]//button[contains(.,'Edit')]`, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.xpath(`(//tr[td[contains(., '${roleName}')]]//button[contains(., 'Edit')])[1]`, { timeout: ELEMENT_TIMEOUT }).click();
   }
 
 
