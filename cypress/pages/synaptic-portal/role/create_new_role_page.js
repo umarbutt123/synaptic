@@ -12,7 +12,7 @@ const CLICK_ROLE_PERMISSION = "//p-dropdown[@formcontrolname='permission' and @p
 const BTN_SUBMIT = "//span[text()='Save']";
 
 const ELEMENT_TIMEOUT = 20000;
-class CreateNewResellerRolePage {
+class CreateNewRolePage {
 
   static navigateToAddRolePageUsingUrl() {
     cy.log("Navigate to manage roles page");
@@ -90,4 +90,4 @@ class CreateNewResellerRolePage {
 
 
 }
-export default CreateNewResellerRolePage;
+export default CreateNewRolePage;
