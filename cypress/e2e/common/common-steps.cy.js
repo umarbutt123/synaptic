@@ -59,6 +59,11 @@ Then(/^I am able to validate proper message below field "([^"]*)"$/, (field) => 
   CommonUtilities.validateFieldMessage(field);
 });
 
+Then(/^I am able to validate proper error message "([^"]*)"$/, (message) => {
+  cy.debug('Validate message');
+  CommonUtilities.validateMessage(message);
+});
+
 Then(/^I perform Hide all columns operation$/, () => {
   cy.debug('Hide all columns');
   CommonUtilities.hideColumns();

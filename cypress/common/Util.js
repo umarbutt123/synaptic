@@ -190,6 +190,12 @@ class CommonUtilities {
   }
 
 
+  static validateMessage(message) {
+    cy.log('validating field message');
+    cy.contains(message).should('be.visible');
+  }
+
+
   // hide all columns
 
   static hideColumns() {

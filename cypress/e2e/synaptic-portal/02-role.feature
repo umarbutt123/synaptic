@@ -9,7 +9,7 @@ Feature: 02- Role Feature
     ##################### Synaptic ##########################
 
     @role
-    Scenario Outline: Role name should be a manddatory field when creating a new role
+    Scenario Outline: Role name should be a mandatory field when creating a new role
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Role Page
         And I click on add new role button
@@ -21,7 +21,7 @@ Feature: 02- Role Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""        | "This is a testing role description" | "Active"    | "X-Matrix" | "Strategic Objectives" | "AI Strategic Objective" | "Write"    | "Role name" |
 
     @role
-    Scenario Outline: Module field should be manddatory when creating a new role
+    Scenario Outline: Module field should be mandatory when creating a new role
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Role Page
         And I click on add new role button
@@ -33,7 +33,7 @@ Feature: 02- Role Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""        | "This is a testing role description" | "Active"    | ""     | ""     | ""      | ""         | "Module" |
 
     @role
-    Scenario Outline: Screen field should be manddatory when creating a new role
+    Scenario Outline: Screen field should be mandatory when creating a new role
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Role Page
         And I click on add new role button
@@ -45,7 +45,7 @@ Feature: 02- Role Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""        | "This is a testing role description" | "Active"    | "X-Matrix" | ""     | ""      | ""         | "Screen" |
 
     @role
-    Scenario Outline: Feature field should be manddatory when creating a new role
+    Scenario Outline: Feature field should be mandatory when creating a new role
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Role Page
         And I click on add new role button
@@ -57,7 +57,7 @@ Feature: 02- Role Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""        | "This is a testing role description" | "Active"    | "X-Matrix" | "Strategic Objectives" | ""      | ""         | "Feature" |
 
     @role
-    Scenario Outline: Permission field should be manddatory when creating a new role
+    Scenario Outline: Permission field should be mandatory when creating a new role
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Role Page
         And I click on add new role button
