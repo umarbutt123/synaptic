@@ -39,7 +39,7 @@ module.exports = defineConfig({
     "accessibility": 50,
     "performance": 5,
     "seo": 10,
-    "TAGS": "@user"
+    "TAGS": "@user1"
   },
   "e2e": {
     "specPattern": "**/*.feature",
