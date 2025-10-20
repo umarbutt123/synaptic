@@ -7,7 +7,7 @@
     "cypress:open": "cypress open",
     "test": "cypress run --env TAGS='@e2e-test' --spec 'cypress/e2e/**/*.feature' --browser chrome --config 'baseUrl=https://www.google.com'",
     "test:seamless": "npm run report:clean && npm run test:cypress || npm run posttest",
-    "test:cypress": "NO_COLOR=1 cypress run -e TAGS=$tag,hostname=$apihost,host=$dbhost --browser chrome --headless --config-file cypress.config.js --config baseUrl=$baseUrl CYPRESS_lighthouse=$enable",
+    "test:cypress": "NO_COLOR=1 cypress run -e TAGS=$tag,hostname=$apihost,host=$dbhost --browser chrome --headed --config-file cypress.config.js --config baseUrl=$baseUrl CYPRESS_lighthouse=$enable",
     "test:debug": "cypress run --headed --browser chrome --env TAGS='@e2e-test' --spec 'cypress/e2e/**/*.feature'",
     "report:clean": "rimraf ./cypress/PTReports/* && rimraf ./cypress/reports/* && mkdir ./cypress/reports/mocha && mkdir ./cypress/reports/mochareports && mkdir ./cypress/reports/cucumber-json",
     "pre:cleanup": "rimraf ./cypress/screenshots && rimraf ./cypress/videos",

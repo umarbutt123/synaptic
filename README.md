@@ -34,7 +34,7 @@ Run following command:
 Run Test Case using Following Command (It will run test on 10.91.10.183 if we pass value as baseUrl=http://10.91.10.183/):
 
 - Here currently below tag is present to run regression suite for UBP -
-- @e2e-seamless-one-std
+- @e2e-synaptic
 
 ## Before commit check code syntax and error using below command:
 
@@ -54,7 +54,7 @@ In cypress.json add ==>
 
 - Example:
   In feature file mention same tag against scenario.
-  @e2e-seamless-one-std @run
+  @e2e-synaptic @run
   Scenario Outline: Performing Edit Account type operation for existing Account Type
 
 ## In order to check performace
@@ -86,7 +86,7 @@ threads=2 tag=@e2e-seamless-one-std baseUrl=http://10.91.11.117/ apihost=10.91.1
    unzip -qa package-28.zip 
    npm install
 9. run test cases and generate html report 
-   tag=@e2e-seamless-one-std baseUrl=http://10.91.10.124/ CYPRESS_lighthouse=false npm run test:cucumber (please provide appropriate baseUrl and tag)
+   tag=@e2e-synaptic baseUrl=http://10.91.10.124/ CYPRESS_lighthouse=false npm run test:cucumber (please provide appropriate baseUrl and tag)
    if test case requires API connection and DB connection , please change hostname and host in cypress.json before execution.
 
 
@@ -99,13 +99,7 @@ threads=2 tag=@e2e-seamless-one-std baseUrl=http://10.91.11.117/ apihost=10.91.1
       docker push sdsdockerhub/ubp-test
 
 2. create below directories in local 
-      mkdir -p /var/seamless/log/ss-ui-automation/cypress/reports
+      mkdir -p /var/synaptic/log/ss-ui-automation/cypress/reports
 
 3. run docker image
-      docker run gp-ui /bin/bash -c "threads=2 tag=@e2e-seamless-one-std baseUrl=http://10.91.11.117/ apihost=10.91.11.117 dbhost=10.91.11.117 CYPRESS_lighthouse=false npm run cypress:parallel && npm run node:cucumber || npm run node:cucumber && ./reportServer.sh"
-
-4. reports will be available on report server
-      cucumber html report: http://10.91.10.124:8888/gp/
-
-##  In order to execute testcases using bamboo plan
-https://confluence.seamless.se/display/SDSTS/Customer+Specific+Automation+Run+From+Bamboo
+      docker run gp-ui /bin/bash -c "threads=2 tag=@e2e-synaptic baseUrl=http://10.91.11.117/ apihost=10.91.11.117 dbhost=10.91.11.117 CYPRESS_lighthouse=false npm run cypress:parallel && npm run node:cucumber || npm run node:cucumber && ./reportServer.sh"

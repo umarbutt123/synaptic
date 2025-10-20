@@ -1,6 +1,6 @@
 Feature: 02- User Feature
 
-    As a user on the unified portal Application
+    As a user on the synaptic portal Application
     I want to create user
 
     Background:
@@ -8,7 +8,7 @@ Feature: 02- User Feature
 
     ##################### Synaptic ##########################
 
-    @user
+    @user @regression
     Scenario Outline: First and Last name should be mandatory fields when creating a new user
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -22,7 +22,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""         | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-    @user
+    @user @regression
     Scenario Outline: User role and Email should be mandatory fields when creating a new user
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -36,7 +36,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE | USER_EMAIL | STATUS   | ROLE_FIELD | USER_EMAIL_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "Smith"   | ""   | ""         | "Active" | "Role"     | "Email"          |
 
-    @user
+    @user @regression
     Scenario Outline: Admin should not be able to add user with invalid email address
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -49,7 +49,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL  | STATUS   | MESSAGE                               |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "Smith"   | "Dashboard" | "testgmail" | "Active" | "Please enter a valid email address." |
 
-    @user
+    @user @regression
     Scenario Outline: Admin should not be able to add user with existing email address
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -62,7 +62,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL                         | STATUS   | MESSAGE                                  |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "Smith"   | "Dashboard" | "voulleddayeimei-2462@yopmail.com" | "Active" | "A user with this email already exists." |
 
-    @user
+    @user @regression
     Scenario Outline: Admin should not be able to add user with lengthy first name field value
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -75,7 +75,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME                                                          | LAST_NAME | ROLE        | USER_EMAIL                         | STATUS   | MESSAGE                                                         |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "asaksjdhakjshdjkashdkjha kjhajksdh jkashdkjashd kjahkjahskjd askd" | "Smith"   | "Dashboard" | "voulleddayeimei-2462@yopmail.com" | "Active" | "Invalid request model please provide the valid request model." |
 
-    @user
+    @user @regression
     Scenario Outline: Admin should not be able to add user with lengthy last name field value
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page

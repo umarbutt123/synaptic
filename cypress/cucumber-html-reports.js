@@ -31,8 +31,8 @@ report.generate({
   ignoreSkipTest: true,
   reportPath: './cypress/reports/cucumber/',
   pageTitle: 'UI Automation Test Report',
-  reportName: 'SUDANI Regression Run',
-  pageFooter: '<div><p>Seamless Private Ltd.</p></div>',
+  reportName: 'Synaptic Regression Run',
+  pageFooter: '<div><p>Synaptic</p></div>',
   displayDuration: true,
   displayReportTime: true,
   metadata: {
@@ -49,7 +49,7 @@ report.generate({
   customData: {
     title: 'Run info',
     data: [
-      { label: 'Project', value: 'SUDANI UI Automation' },
+      { label: 'Project', value: 'Synaptic UI Automation' },
       { label: 'UI App Version', value: 'v0.3.414' },
       { label: 'Report Date', value: datefns.format(new Date(), "yyyy-MM-dd HH:mm:ss") },
     ],

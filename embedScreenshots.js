@@ -38,7 +38,7 @@ fs.readdirSync(cucumberJsonDirectory).forEach(file => {
         if (scenario.steps) {
           scenario.steps.forEach(step => {
             if (step.result && step.result.status === 'failed') {
-              const exampleNumber = findExampleNumber(`cypress/e2e/unified-portal/${feature.uri}`, `${scenario.name}`, `$${scenario.line}`);
+              const exampleNumber = findExampleNumber(`cypress/e2e/synaptic-portal/${feature.uri}`, `${scenario.name}`, `$${scenario.line}`);
               const scenarioNameWithoutColon = `${scenario.name}`.replace(/:/g, '');
               const screenshotPathPattern = `cypress/reports/mochareports/assets/${feature.uri}/${feature.name} -- ${scenarioNameWithoutColon} ${exampleNumber} (failed).png`;
               const screenshotPath = path.resolve(__dirname, screenshotPathPattern);
