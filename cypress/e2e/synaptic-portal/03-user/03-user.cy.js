@@ -16,6 +16,10 @@ And(/^I click on add new user button$/, () => {
   userPage.clickOnAddNewUserButton();
 });
 
+Then(/^I click on update button$/, () => {
+  userPage.clicOnUpdate();
+});
+
 When(/^I perform Create User having following parameters "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)"$/, (firstName, lastName, role, email, status) => {
   cy.log("Enter first name")
   userPage.fillFirstName(firstName);
@@ -37,12 +41,13 @@ Then(/^I click on cancel button$/, () => {
 
 
 When(/^I click on edit user button "([^"]*)"$/, (email) => {
-  userPage.editUserLastName(email);
+  userPage.clickEditUserButton(email);
+  cy.wait(2000);
 });
 
-When(/^I perform Edit Role having following parameters "([^"]*)"$/, (email) => {
+When(/^I perform Edit user having following parameters "([^"]*)"$/, (lastName) => {
   cy.log("Enter user last name")
-  userPage.editUserLastName(email);
+  userPage.fillLastName(lastName);
 });
 
 Then(/^I validate data in table "([^"]*)"$/, (email) => {

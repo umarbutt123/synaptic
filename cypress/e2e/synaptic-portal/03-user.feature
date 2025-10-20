@@ -88,7 +88,7 @@ Feature: 02- User Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME                                                           | ROLE        | USER_EMAIL                         | STATUS   | MESSAGE                                                         |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "asaksjdhakjshdjkashdkjha kjhajksdh jkashdkjashd kjahkjahskjd askd" | "Dashboard" | "voulleddayeimei-2462@yopmail.com" | "Active" | "Invalid request model please provide the valid request model." |
 
-    @user1
+    @user @regression
     Scenario Outline: Admin should be able to add user with valid data
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
@@ -99,16 +99,17 @@ Feature: 02- User Feature
         Then I logout
         Examples:
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL             | STATUS   | MESSAGE                   |
-            | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "smith4"  | "Dashboard" | "johnsmith4@gmail.com" | "Active" | "Email sent successfully" |
+            | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "smith5"  | "Dashboard" | "johnsmith5@gmail.com" | "Active" | "Email sent successfully" |
 
-    @user1
+    @user @regression
     Scenario Outline: Admin should be able to edit user with valid data
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the User Page
-        And I click on edit role button <USER_EMAIL>
-# When I perform Edit Role having following parameters <LAST_NAME_UPDATE>
-# Then I am able to validate proper message <MESSAGE>
-# Then I validate data in table <LAST_NAME_UPDATE>
-# And I click on edit role button <USER_EMAIL>
-# When I perform Edit Role having following parameters <LAST_NAME>
-# Then I am able to validate proper message <MESSAGE>
+        And I click on edit user button <USER_EMAIL>
+        When I perform Edit user having following parameters <LAST_NAME_UPDATE>
+        Then I click on update button
+        Then I am able to validate proper message <MESSAGE>
+        Then I logout
+        Examples:
+            | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | LAST_NAME_UPDATE | ROLE        | USER_EMAIL             | STATUS   | MESSAGE                     |
+            | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "John"     | "smith5"  | "smith5_update"  | "Dashboard" | "johnsmith5@gmail.com" | "Active" | "User updated successfully" |

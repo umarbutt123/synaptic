@@ -9,7 +9,7 @@ const USER_EMAIL = "//input[@id='email']";
 const CLICK_USER_STATUS = "//p-dropdown[@formcontrolname='status' and @placeholder='Select Status']";
 const BTN_SUBMIT = "//span[text()='Create']";
 const BTN_CANCEL = "//span[text()='Cancel']";
-
+const BTN_UPDATE = "//span[text()='Update']";
 
 const ELEMENT_TIMEOUT = 20000;
 
@@ -64,6 +64,12 @@ class CreateNewUserPage {
 
   static clicOnCreate() {
     cy.xpath(BTN_SUBMIT, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
+  static clicOnUpdate() {
+    cy.intercept('PUT', 'api/User/EditUser*').as('updateUser');
+    cy.xpath(BTN_UPDATE, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait('@updateUser');
   }
 
   static clicOnCancel() {
