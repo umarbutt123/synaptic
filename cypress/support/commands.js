@@ -131,15 +131,22 @@ Cypress.Commands.add("checkPerformance", () => {
 
 Cypress.Commands.add('loginWithSession', (username, password) => {
   cy.session([username, password], () => {
-    cy.visit('/login');
-    cy.xpath("//input[@id='userId']").clear().type(username);
-    cy.xpath("//input[@id='password']").clear().type(password, { log: false });
-    cy.xpath("(//span[contains(text(),'Login')])[1]").click();
+    cy.visit('/');
+    // cy.intercept('POST', 'api/Account/LogIn').as('login');
+    cy.xpath("//input[@id='email']").clear().type(username);
+    cy.xpath("//input[@id='password']").clear().type(password);
+    cy.xpath("//input[@id='recaptchaCheckbox']").click();
+    cy.xpath("//button[@label='Log In']").click();
+    // cy.wait('@login');
+    // cy.xpath("//input[@id='userId']").clear().type(username);
+    // cy.xpath("//input[@id='password']").clear().type(password, { log: false });
+    // cy.xpath("(//span[contains(text(),'Login')])[1]").click();
     cy.wait(3000);
-    cy.url().should('contains', '/home/');
-    cy.wait(5000);
+    cy.url().should('contains', '/x-matrix/goals');
+    cy.wait(4000);
   },
     {
       cacheAcrossSpecs: true
     });
 });
+

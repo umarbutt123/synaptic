@@ -4,9 +4,19 @@ import {
 } from 'cypress-cucumber-preprocessor/steps';
 
 import XMatrixPage from '../../../pages/synaptic-portal/graph/XMatrix';
-// before(() => {
-//   cy.loginWithSession("croubayinoulle-3277@yopmail.com", "Test@1234");
-// });
+
+before(() => {
+  cy.loginWithSession("croubayinoulle-3277@yopmail.com", "Test@1234");
+});
+
+When(/^I navigate to the X-Matrix page$/, () => {
+  XMatrixPage.navigateToXMatrixPageUsingURL();
+});
+
+And(/^I click on create X-Matrix button$/, () => {
+  cy.wait(2000);
+  XMatrixPage.clickOnCreateXMatrixButton();
+});
 
 And(/^I click on edit X-Matrix button$/, () => {
   cy.wait(2000);
@@ -34,7 +44,7 @@ And(/^I click on delete strategic objective button$/, () => {
 });
 
 And(/^I click on update icon on strategic objective$/, () => {
-  XMatrixPage.clickEditButton();
+  XMatrixPage.clickEditIcon();
 });
 
 And(/^I click on update objective button$/, () => {
@@ -54,9 +64,18 @@ And(/^I click on add comment button$/, () => {
   XMatrixPage.clickAddCommentButton();
 });
 
+Then(/^I click on save progress button$/, () => {
+  XMatrixPage.clicOnSaveProgress();
+});
+
 Then(/^I validate strategic objective is visible on graph "([^"]*)"$/, (title) => {
   XMatrixPage.validateStrategicObjective(title);
 });
+
+Then(/^I validate strategic objective is not visible on graph "([^"]*)"$/, (title) => {
+  XMatrixPage.validateStrategicObjectiveIsNotVisible(title);
+});
+
 
 Then(/^I validate comment is addedd successfully "([^"]*)"$/, (comment) => {
   XMatrixPage.validateComment(comment);
