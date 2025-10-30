@@ -82,7 +82,6 @@ Feature: 04- XMatrix Feature
             | EMAIL                             | PASSWORD    | TITLE                                          | DESCRIPTION                                                       | STRATEGIC_OBJECTIVE                     |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "Automated annual Strategic Objectives Update" | "Adding Automated annual Strategic Objectives description Update" | "Automated Strategic Objectives Update" |
 
-
     @xmatrix @regression
     Scenario Outline: User should be able to add comment on Annual Strategic Objective in X-Matrix graph
         When Provide <EMAIL> and <PASSWORD> and login into system
