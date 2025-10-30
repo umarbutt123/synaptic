@@ -5,9 +5,9 @@ import {
 
 import XMatrixPage from '../../../pages/synaptic-portal/graph/XMatrix';
 
-before(() => {
-  cy.loginWithSession("croubayinoulle-3277@yopmail.com", "Test@1234");
-});
+// before(() => {
+//   cy.loginWithSession("croubayinoulle-3277@yopmail.com", "Test@1234");
+// });
 
 When(/^I navigate to the X-Matrix page$/, () => {
   XMatrixPage.navigateToXMatrixPageUsingURL();
@@ -19,7 +19,6 @@ And(/^I click on create X-Matrix button$/, () => {
 });
 
 And(/^I click on edit X-Matrix button$/, () => {
-  cy.wait(2000);
   XMatrixPage.clickOnEditXMatrixButton();
 });
 
@@ -27,7 +26,7 @@ Then(/^I click on update button$/, () => {
   userPage.clicOnUpdate();
 });
 
-When(/^I enter strategic objective details having following parameters "([^"]*)" "([^"]*)"$/, (title, description) => {
+When(/^I enter details having following parameters "([^"]*)" "([^"]*)"$/, (title, description) => {
   cy.log("Enter title")
   XMatrixPage.fillStrategicObjectiveTitle(title);
   cy.log("Enter description")
@@ -72,6 +71,10 @@ Then(/^I validate strategic objective is visible on graph "([^"]*)"$/, (title) =
   XMatrixPage.validateStrategicObjective(title);
 });
 
+Then(/^I validate annual strategic objective is visible on graph "([^"]*)"$/, (title) => {
+  XMatrixPage.validateAnnualStrategicObjective(title);
+});
+
 Then(/^I validate strategic objective is not visible on graph "([^"]*)"$/, (title) => {
   XMatrixPage.validateStrategicObjectiveIsNotVisible(title);
 });
@@ -85,26 +88,102 @@ Then(/^I click on save and exit button$/, () => {
   XMatrixPage.clicOnSaveAndExit();
 });
 
-Then(/^I click on save and exit button$/, () => {
-  XMatrixPage.clicOnSaveProgress();
+Then(/^I click on save and exit annual objective button$/, () => {
+  XMatrixPage.clicOnSaveAndExitAnnualObjective();
 });
 
 And(/^I click on confirm delete button$/, () => {
   XMatrixPage.clickConfirmDeleteButton();
 });
 
-When(/^I click on edit user button "([^"]*)"$/, (email) => {
-  userPage.clickEditUserButton(email);
-  cy.wait(2000);
+And(/^I click on confirm delete annual objective button$/, () => {
+  XMatrixPage.clickConfirmDeleteButtonAnnualObjective();
 });
 
-When(/^I perform Edit user having following parameters "([^"]*)"$/, (lastName) => {
-  cy.log("Enter user last name")
-  userPage.fillLastName(lastName);
+And(/^I click on next quadrant button$/, () => {
+  XMatrixPage.clickNextQuadrantButton();
 });
 
-Then(/^I validate data in table "([^"]*)"$/, (email) => {
-  cy.log("Enter role name")
-  userPage.validateDataInTable(email);
+And(/^I click on add new annual objective button$/, () => {
+  XMatrixPage.clickAddNewAnnualObjectiveButton();
+});
 
+And(/^I click on connect strategic objective button$/, (strategicObjective) => {
+  XMatrixPage.connectStrategicObjective(strategicObjective);
+});
+
+And(/^I click on edit icon on annual objective$/, () => {
+  XMatrixPage.clickEditIconAnnualObjective();
+});
+
+And(/^I click on comment icon on annual objective$/, () => {
+  XMatrixPage.clickCommentIconAnnualObjective();
+});
+
+And(/^I click on delete icon on annual objective$/, () => {
+  XMatrixPage.clickDeleteIconAnnualObjective();
+});
+
+Then(/^I validate Delete button is disabled on selecting no connected quadrant$/, () => {
+  XMatrixPage.validateDeleteButtonIsDisabled();
+  XMatrixPage.clickDeleteCancelButton();
+});
+
+And(/^I click on connected quadrant checkbox$/, () => {
+  XMatrixPage.clickConnectedQuadrantCheckbox();
+});
+
+Then(/^I validate strategic annual objective is not visible on graph "([^"]*)"$/, (title) => {
+  XMatrixPage.validateStrategicAnnualObjectiveIsNotVisible(title);
+});
+
+And(/^I click on update annual objective button$/, () => {
+  XMatrixPage.clickUpdateAnnualObjectiveButton();
+});
+
+And(/^I validate top level improvement screen$/, () => {
+  XMatrixPage.validateTopLevelImprovementScreen();
+});
+
+And(/^I assign resource "([^"]*)" "([^"]*)"$/, (resourceName, resourceTitle) => {
+  XMatrixPage.clickAssignResourceButton();
+  XMatrixPage.selectResource(resourceName);
+  XMatrixPage.selectResourceTitle(resourceTitle);
+  XMatrixPage.clickSendButton();
+});
+
+And(/^I click on connect annual strategic objective button "([^"]*)"$/, (annualStrategicObjective) => {
+  XMatrixPage.connectAnnualStrategicObjective(annualStrategicObjective);
+});
+
+And(/^I click on add new priority button$/, () => {
+  XMatrixPage.clickAddNewPriorityButton();
+});
+
+Then(/^I click on save and exit top level improvement button$/, () => {
+  XMatrixPage.clickSaveAndExitTopLevelImprovementButton();
+});
+
+Then(/^I validate top level improvement is visible on graph "([^"]*)"$/, (title) => {
+  XMatrixPage.validateTopLevelImprovement(title);
+});
+
+And(/^I click on okay button$/, () => {
+  XMatrixPage.clickOkayButton();
+});
+
+And(/^I click on edit icon on top level improvement "([^"]*)"$/, (title) => {
+  XMatrixPage.clickEditIconTopLevelImprovement(title);
+});
+
+And(/^I click on comment icon on top level improvement "([^"]*)"$/, (title) => {
+  XMatrixPage.clickCommentIconTopLevelImprovement(title);
+});
+
+And(/^I click on delete icon on top level improvement "([^"]*)"$/, (title) => {
+  XMatrixPage.clickDeleteIconTopLevelImprovement(title);
+});
+
+And(/^I click on update top level improvement button$/, () => {
+  XMatrixPage.clickUpdateTopLevelImprovementButton();
 });

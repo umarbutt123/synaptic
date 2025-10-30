@@ -27,6 +27,12 @@ When(/^Provide "([^"]*)" and "([^"]*)" and login into system$/, (email, password
   // cy.debug('Now we are in Homepage after successful login');
 });
 
+Then(/^I am able to validate proper message "([^"]*)"$/, (message) => {
+  cy.debug('Validate message');
+  //cy.wait(2000);
+  CommonUtilities.validateMessage(message);
+});
+
 When(/^Provide "([^"]*)" and "([^"]*)" and login into system$/, (resellerId, password) => {
   cy.debug("The portal is opening now");
   PortalLoginPage.login(resellerId, password);

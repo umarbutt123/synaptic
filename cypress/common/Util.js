@@ -20,20 +20,6 @@ const PAGE_TITLE = "//h4";
 class CommonUtilities {
   //    validate and close alert pop-up
 
-  static validateMessage(message) {
-    // cy.log('validating message', message);
-    cy.xpath(`//div[contains(text(),'${message}')]`, { timeout: 10000 }).then((alert) => {
-      const text = alert.text();
-      expect(text).to.contains(message);
-    });
-    // cy.log("Closing alert message ");
-    // cy.xpath(CLOSE_ALERTMESSAGE, { timeout: 10000 }).each(($el, index, $list) => {
-    // cy.wrap($el).click();
-    // });
-    // cy.xpath(CLOSE_ALERTMESSAGE).click({ multiple: true });
-    // cy.log("It is done");
-  }
-
   //    apply filter for table
 
   static applyFilter(field, operation, value) {
@@ -194,7 +180,6 @@ class CommonUtilities {
     cy.log('validating field message');
     cy.contains(message).should('be.visible');
   }
-
 
   // hide all columns
 
