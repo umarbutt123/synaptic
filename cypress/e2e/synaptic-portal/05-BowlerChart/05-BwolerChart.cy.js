@@ -12,12 +12,12 @@ And(/^I navigate to the Bowler Chart Page$/, () => {
   BowlerPage.navigateToBowlerChartPageUsingURL();
 });
 
-And(/^I click on add new user button$/, () => {
-  userPage.clickOnAddNewUserButton();
+And(/^I add a value under 1st measurement$/, () => {
+  BowlerPage.addValueUnderFirstMeasurement();
 });
 
-Then(/^I click on update button$/, () => {
-  userPage.clicOnUpdate();
+Then(/^Entered value must be saved successfully$/, () => {
+  BowlerPage.AssertEnteredValue();
 });
 
 When(/^I perform Create User having following parameters "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)"$/, (firstName, lastName, role, email, status) => {
