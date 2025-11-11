@@ -39,7 +39,7 @@ module.exports = defineConfig({
     "accessibility": 50,
     "performance": 5,
     "seo": 10,
-    "TAGS": "@xmatrix1"
+    "TAGS": "@a3matrix"
   },
   "e2e": {
     "specPattern": "**/*.feature",
