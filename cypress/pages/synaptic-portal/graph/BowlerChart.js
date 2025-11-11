@@ -174,6 +174,7 @@ class BowlerChartPage {
     cy.log('click on add comment button');
     cy.xpath(BTN_ADD_COMMENT, { timeout: ELEMENT_TIMEOUT }).click();
   }
+
 }
 
 export default BowlerChartPage;

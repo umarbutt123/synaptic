@@ -9,6 +9,7 @@ Feature: 05- Bowler Chart Feature
     ##################### Synaptic ##########################
 
     @TESTABD @regression
+    @TESTBOWLER @regression
     Scenario Outline: New Target must be visible on bowler chart page
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the X-Matrix page
@@ -20,7 +21,7 @@ Feature: 05- Bowler Chart Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""         | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
 
-    @TESTABD @regression
+    @TESTBOWLER @regression
     Scenario Outline: User is able to add actual values manually
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
