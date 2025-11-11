@@ -19,7 +19,15 @@ And(/^I add a value under 1st measurement$/, () => {
 Then(/^Entered value must be saved successfully$/, () => {
   BowlerPage.AssertEnteredValue();
 });
-
+And(/^I navigate to the X-Matrix page$/, () => {
+  BowlerPage.navigateToXMatrixPageUsingURL();
+});
+And(/^I add a new Percentage target$/, () => {
+  BowlerPage.findorAddNewTarget();
+});
+And(/^Entered target must be visible on Bowler chart page$/, () => {
+  BowlerPage.assertTargetonBowlerPage();
+});
 When(/^I perform Create User having following parameters "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)"$/, (firstName, lastName, role, email, status) => {
   cy.log("Enter first name")
   userPage.fillFirstName(firstName);

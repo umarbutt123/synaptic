@@ -8,7 +8,7 @@ Feature: 05- Bowler Chart Feature
 
     ##################### Synaptic ##########################
 
-    @TESTBOWLER @regression
+@TESTBOWLER1 @regression
     Scenario Outline: New Target must be visible on bowler chart page
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the X-Matrix page

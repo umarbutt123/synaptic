@@ -6,19 +6,22 @@ const STRATEGIC_OBJECTIVE_TITLE = "//input[@id='title']";
 const STRATEGIC_OBJECTIVE_DESCRIPTION = "//textarea[@id='description']";
 const BTN_ADD_NEW_OBJECTIVE = "//span[text()='Add New Objective']";
 const BTN_SAVE_AND_EXIT = "//span[text()='Save and Exit Strategic Objectives']";
-const BTN_SAVE_PROGRESS = "//button[text()=' Save Progress ']";
-const BTN_CONTINUE = "//button[text()=' Continue ']";
-const BTN_CONFIRM_DELETE = "//button[text()=' Delete ']";
-const BTN_UPDATE_OBJECTIVE = "//span[text()='Update Objective']";
+const LIST_TARGETS = "//li[@class='text-xl text-primary mb-2']";
+const BTN_SKIP = "//span[contains(text(),' Skip for now')]";
+const BTN_NEXT_QUADRANT = "//span[contains(text(),'Next Quadrant')]";
+const BTN_XMATRIX_UPDATE = "//span[contains(text(),'Edit X-Matrix')]";
 const DIALOG_UPDATE_BUTTON = "//button[contains(text(), 'Update')]";
 const DIALOG_CANCEL_BUTTON = "//button[contains(text(), 'Cancel')]";
 const UPDATE_DIALOG_BOX = "div[role='dialog']";
 const ELEMENT_TIMEOUT = 20000;
 const specific_target_value_spans = "//span[contains(text(),'Pair 80% of emerging leaders with executive mentors within the partnership.')]/parent::*/parent::*/following-sibling::*//span[@class='cell-value ng-star-inserted']"
 const Actual_Value_Spans = "//span[@class='cell-value ng-star-inserted']"
-const Actual_Value_Input = "//div[contains(@class,'data-cell') and contains(@class,'editing')]//input"
+const Actual_Value_Input ="//div[contains(@class,'data-cell') and contains(@class,'editing')]//input"
+//let firstTarget;  
 
 class BowlerChartPage {
+static firstTarget = '';
+
 
   // static navigateToAddUserPageUsingUrl() {
   //   cy.log("Navigate to manage users page");
@@ -52,6 +55,58 @@ class BowlerChartPage {
   static navigateToXMatrixPageUsingURL() {
     cy.log("Navigate to X-Matrix page");
     cy.visit(URL_PATH.xMatrix, { timeout: ELEMENT_TIMEOUT });
+  };
+    static findorAddNewTarget() {
+    cy.log('click on edit x matrix button');
+    cy.wait(1500)
+    cy.xpath(BTN_XMATRIX_UPDATE, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_SKIP, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+    cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1500)
+
+      cy.xpath(LIST_TARGETS).then(($elements) => {
+      if ($elements.length > 0) {
+        cy.wrap($elements.eq(0))
+          .invoke('text')
+          .then((text) => {
+            this.firstTarget = text.trim(); // store trimmed text
+            cy.log(`Stored first target: ${this.firstTarget}`);
+          });
+      } else {
+        cy.log("No elements found.");
+      }
+    });
+
+  }
+
+  static assertTargetonBowlerPage()
+  {
+    cy.log('Navigate to Bowler Chart page');
+    cy.visit(URL_PATH.bowlerChart, { timeout: ELEMENT_TIMEOUT });
+    cy.wait(2000)
+    
+     cy.xpath(`//span[contains(text(),"${this.firstTarget}")]/parent::*//parent::*//parent::*//parent::*//parent::div[@class='chart-group ng-star-inserted']/div[contains(@class, 'bowler-table-container')]`)
+      .then(($div) => {
+        const className = $div.attr('class');
+        if (!className.includes('expanded')) {
+          cy.xpath(`//span[contains(text(),"${this.firstTarget}")]/parent::*//parent::*//parent::*//parent::*//parent::div[@class='chart-group ng-star-inserted']/div[contains(@class, 'bowler-table-container')]/preceding-sibling::*[1]`)
+            .click();
+          cy.log('Clicked collapsed div');
+        } else {
+          cy.log('Already expanded, skipped');
+        }
+      });
+
   };
 
   static navigateToBowlerChartPageUsingURL() {
