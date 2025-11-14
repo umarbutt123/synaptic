@@ -8,7 +8,7 @@ Feature: 05- Bowler Chart Feature
 
     ##################### Synaptic ##########################
 
-    @TESTBOWLERD @regression
+    @TESTBOWLER @regression
     Scenario Outline: New Target must be visible on bowler chart page
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I get the top target from targets page
@@ -18,7 +18,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""         | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-    @TESTBOWLERD @regression
+    @TESTBOWLER @regression
     Scenario Outline: User is able to add actual values manually
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -29,7 +29,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | value | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 9.00  | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-    @TESTBOWLERD @regression
+    @TESTBOWLER @regression
     Scenario Outline: Popup for value already exist must appear
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -40,7 +40,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | value | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 12.00 | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-@TESTBOWLERD @regression
+@TESTBOWLER @regression
     Scenario Outline: Value must be saved after confirming on popup
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -52,7 +52,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | value | button   | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 19.00 | "update" | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-@TESTBOWLERD @regression
+@TESTBOWLER @regression
     Scenario Outline: Old Value must be retained after cancelling on popup
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -64,7 +64,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | value | button   | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 20.00 | "cancel" | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-@TESTBOWLERD @regression
+@TESTBOWLER @regression
     Scenario Outline: Color Grading Change according to threshold
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -77,7 +77,7 @@ Feature: 05- Bowler Chart Feature
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 100.00 | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
 ## No Longer Valid ##
-##@TESTBOWLERR @regression
+##@TESTBOWLER @regression
 ##    Scenario Outline: Error on Non Numeric Value
 ##        When Provide <EMAIL> and <PASSWORD> and login into system
 ##        And I navigate to the Bowler Chart Page
