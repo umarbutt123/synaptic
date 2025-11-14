@@ -12,20 +12,43 @@ And(/^I navigate to the Bowler Chart Page$/, () => {
   BowlerPage.navigateToBowlerChartPageUsingURL();
 });
 
-And(/^I add a value under 1st measurement$/, () => {
-  BowlerPage.addValueUnderFirstMeasurement();
+And('I add a {string} under 1st measurement', (value) => {
+  BowlerPage.addValueUnderFirstMeasurement(value);
 });
-
-Then(/^Entered value must be saved successfully$/, () => {
-  BowlerPage.AssertEnteredValue();
+And('I add a {string} under 1st measurement with dialog', (value) => {
+  BowlerPage.addValueUnderFirstMeasurementWithDialog(value);
+});
+Then(/^A popup confirming the update appears$/, () => {
+  BowlerPage.assertUpdatePopup();
+});
+Then('A popup confirming the update appears with user clicking on {string}', (button) => {
+  BowlerPage.assertUpdatePopupWithButton(button);
+});
+Then('Entered {string} must be saved successfully', (value) => {
+  BowlerPage.AssertEnteredValue(value);
+});
+Then('Entered {string} must not be saved', (value) => {
+  BowlerPage.AssertEnteredValueNot(value);
+});
+And('I Upload a {string}', (value) => {
+  BowlerPage.uploadFile(value);
+});
+Then('Imported {string} must be reflected on the chart', (value) => {
+  BowlerPage.assertImportedValue(value);
 });
 And(/^I navigate to the X-Matrix page$/, () => {
   BowlerPage.navigateToXMatrixPageUsingURL();
 });
+And(/^the box turns green$/, () => {
+  BowlerPage.boxturnsGreen();
+});
 And(/^I add a new Percentage target$/, () => {
   BowlerPage.findorAddNewTarget();
 });
-And(/^Entered target must be visible on Bowler chart page$/, () => {
+And(/^I get the top target from targets page$/, () => {
+  BowlerPage.findTopTarget();
+});
+And(/^the target must be visible on Bowler chart page$/, () => {
   BowlerPage.assertTargetonBowlerPage();
 });
 When(/^I perform Create User having following parameters "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)" "([^"]*)"$/, (firstName, lastName, role, email, status) => {
