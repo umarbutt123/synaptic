@@ -78,6 +78,10 @@ class XMatrixPage {
   static clickonAddButton(subTitle) {
     cy.xpath(`//div[.='${subTitle}']/following-sibling::button`, { timeout: ELEMENT_TIMEOUT }).click();
   }
+  static clickonEditButton(Title) {
+    cy.xpath(`//div[.='${Title}']//button[@aria-label='Edit']`, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+  clickonEditButton
 
   static fillTitle(subTitle, title) {
     if (subTitle === "Objective:") {
@@ -85,9 +89,56 @@ class XMatrixPage {
         cy.xpath(`(//div[contains(.,'${subTitle}')]/following::textarea)[2]`, { timeout: ELEMENT_TIMEOUT }).clear().type(title);
       }
     }
-    else if (subTitle === "Current Status:") {
+    else if (subTitle === "Current Status:" || subTitle === "Tools Used:") {
       if (title !== "") {
-        cy.xpath("(//textarea[@placeholder='Enter list item...'])[4]", { timeout: ELEMENT_TIMEOUT }).type(title);
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[4]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+       else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[6]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }  
+
+    else if (subTitle === "Analysis:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[5]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+    else if (subTitle === "SuggestedActions:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[7]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+  }
+
+
+  static EditText(subTitle, title) {
+    if (subTitle === "Objective:" || subTitle === "Background:" || subTitle === "Significance:") {
+      if (title !== "") {
+        
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[2]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+    else if (subTitle === "Current Status:" || subTitle === "Tools Used:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[4]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+       else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[6]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }  
+
+    else if (subTitle === "Analysis:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[5]`, { timeout: ELEMENT_TIMEOUT }).type(title);
+      }
+    }
+    else if (subTitle === "SuggestedActions:") {
+      if (title !== "") {
+        cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[7]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
   }

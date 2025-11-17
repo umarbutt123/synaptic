@@ -39,15 +39,25 @@ And(/^I click add new objective button on "([^"]*)" chart$/, (chartName) => {
   A3MatrixPage.clickOnAddNewContentButton(chartName);
 });
 
-And(/^I click add new objective button on "([^"]*)" chart$/, (chartName) => {
-  A3MatrixPage.clickOnAddNewContentButton(chartName);
-});
+// And(/^I click add new objective button on "([^"]*)" chart$/, (chartName) => {
+//   A3MatrixPage.clickOnAddNewContentButton(chartName);
+// });
 
 And(/^I add new "([^"]*)" with following title "([^"]*)"$/, (subTitle, title) => {
   A3MatrixPage.clickonAddButton(subTitle);
   A3MatrixPage.fillTitle(subTitle, title);
   A3MatrixPage.clickOnSaveButton();
 });
+
+And(/^I click on Edit button on "([^"]*)" chart$/, (Title) => {
+  A3MatrixPage.clickonEditButton(Title);
+});
+
+And(/^I add following "([^"]*)" against "([^"]*)" while editing$/, (text, subTitle) => {
+  A3MatrixPage.EditText(subTitle, text);
+  A3MatrixPage.clickOnSaveButton();
+});
+
 
 And(/^I add new current status with following title "([^"]*)"$/, (title) => {
   A3MatrixPage.clickonAddButton("Current Status:");
