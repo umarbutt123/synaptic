@@ -14,7 +14,6 @@ const emailConfig = {
    // Email Content
    from: '',
    to: '',
-   // to: 'ayeshaishfaqkiani@gmail.com',
    subject: 'Synaptic Test Reports Automation',
    text: 'Hello,\n\nThis email contains our latest Synaptic test reports link Uploaded on Google Drive.\nThe zip file includes HTML reports and test results.\n https://drive.google.com/drive/u/1/folders/1gJiIttHKrR0atufSF89wiNTNpyIbNKLR. \n\nBest regards,\nTest Automation Team'
 };
