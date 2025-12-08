@@ -17,6 +17,8 @@ const BTN_UPDATE_ANNUAL_OBJECTIVE = "//span[text()='Update Annual Objective']";
 const ADD_COMMENT = "//textarea[@placeholder='Add a comment...']";
 const BTN_ADD_COMMENT = "//button[@aria-label='Send comment']";
 const BTN_NEXT_QUADRANT = "//span[text()='Next Quadrant']";
+const BTN_SKIP_FOR_NOW = "//span[normalize-space()='Skip for now']";
+
 const BTN_DELETE_CANCEL = "//button[normalize-space(text())='Cancel']";
 const CHK_CONNECTED_QUADRANT = "//input[@type='checkbox' and contains(@class,'p-element')]";
 const BTN_ASSIGN_RESOURCE = "//span[text()='Assign Resource']";
@@ -24,9 +26,18 @@ const RESOURCE_NAME_SEARCH_BOX = "//input[@placeholder='Search by name']";
 const RESOURCE_TITLE_DROPDOWN = "//span[@aria-label='Select the title category for resource']";
 const BTN_SEND = "//button[normalize-space()='Send']"
 const BTN_CONNECT_ANNUAL_STRATEGIC_OBJECTIVE = "//span[text()='Connect a Annual Objective']";
+const BTN_CONNECT_IMPROVEMENT_PRIORITY = "//span[text()='Connect a an Improvement Priority ']";
 const BTN_ADD_NEW_PRIORITY = "//span[text()='Add New Priority']";
+const BTN_ADD_NEW_TARGET = "//span[text()='Add New Target']";
 const BTN_SAVE_AND_EXIT_TOP_LEVEL_IMPROVEMENT = "//span[text()='Save and Exit Top Level Improvements']";
+const BTN_SAVE_AND_EXIT_TARGETS = "//span[normalize-space()='Save and Exit Targets']";
+
+
+
 const BTN_OKAY = "//button[normalize-space()='Okay']";
+const BTN_ADD_MEASURES = "//span[normalize-space()='Add Measures']";
+const ADD_MEASURES_BUTTON = "(//button[normalize-space()='Add Measures'])[2]";
+
 const BTN_UPDATE_TOP_LEVEL_IMPROVEMENT = "//span[text()='Update Priority']";
 const ELEMENT_TIMEOUT = 20000;
 
@@ -81,9 +92,9 @@ class XMatrixPage {
   }
 
   static clicOnSaveProgress() {
-    cy.intercept('GET', 'api/StrategicObjective/strategic-objectives-detailed*').as('strategicObjectivesDetail');
+    // cy.intercept('GET', 'api/StrategicObjective/strategic-objectives-detailed*').as('strategicObjectivesDetail');
     cy.xpath(BTN_SAVE_PROGRESS, { timeout: ELEMENT_TIMEOUT }).click();
-    cy.wait('@strategicObjectivesDetail');
+    // cy.wait('@strategicObjectivesDetail');
   }
 
   static clicOnContinue() {
@@ -179,8 +190,10 @@ class XMatrixPage {
 
   static connectStrategicObjective(strategicObjective) {
     cy.log('click on connect strategic objective button');
+    cy.wait(1000);
     cy.xpath(BTN_CONNECT_STRATEGIC_OBJECTIVE, { timeout: ELEMENT_TIMEOUT }).click();
     cy.log("Connect strategic objective");
+    cy.wait(1000);
     cy.xpath(`(//span[text()=' ${strategicObjective} '])[2]`)
       .click({ force: true });
   }
@@ -188,6 +201,13 @@ class XMatrixPage {
   static clickNextQuadrantButton() {
     cy.log('click on next quadrant button');
     cy.xpath(BTN_NEXT_QUADRANT, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1000);
+  }
+
+  static clickSkipForNowButton() {
+    cy.log('click on skip for now button');
+    cy.xpath(BTN_SKIP_FOR_NOW, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1000);
   }
 
   static clickEditIconAnnualObjective() {
@@ -301,9 +321,23 @@ class XMatrixPage {
       .click({ force: true });
   }
 
+  static connectImprovementPriority(improvementPriority) {
+    cy.log('click on connect improvement priority button');
+    cy.wait(1000);
+    cy.xpath(BTN_CONNECT_IMPROVEMENT_PRIORITY, { timeout: ELEMENT_TIMEOUT }).click();
+    cy.log("Connect improvement priority");
+    cy.xpath(`(//span[normalize-space()='${improvementPriority}'])[2]`)
+      .click({ force: true });
+  }
+
   static clickAddNewPriorityButton() {
     cy.log('click on add new priority button');
     cy.xpath(BTN_ADD_NEW_PRIORITY, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
+  static clickAddNewTargetButton() {
+    cy.log('click on add new target button');
+    cy.xpath(BTN_ADD_NEW_TARGET, { timeout: ELEMENT_TIMEOUT }).click();
   }
 
   static validateSuccessMessage(message) {
@@ -316,7 +350,17 @@ class XMatrixPage {
     cy.xpath(BTN_SAVE_AND_EXIT_TOP_LEVEL_IMPROVEMENT, { timeout: ELEMENT_TIMEOUT }).click();
   }
 
+  static clickSaveAndExitTargetsButton() {
+    cy.log('click on save and exit top level improvement button');
+    cy.xpath(BTN_SAVE_AND_EXIT_TARGETS, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
   static validateTopLevelImprovement(title) {
+    cy.wait(2000);
+    cy.xpath(`//div[@id='0']//span[normalize-space()='${title}']`, { timeout: ELEMENT_TIMEOUT }).should('exist');
+  }
+
+  static validateTarget(title) {
     cy.wait(2000);
     cy.xpath(`//div[@id='0']//span[normalize-space()='${title}']`, { timeout: ELEMENT_TIMEOUT }).should('exist');
   }
@@ -324,6 +368,20 @@ class XMatrixPage {
   static clickOkayButton() {
     cy.log('click on okay button');
     cy.xpath(BTN_OKAY, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
+  static clickAddMeasuresButton() {
+    cy.log('click on okay button');
+    // cy.intercept('GET', 'api/MeasuresAI/get-target-measure/*').as('targetMeasureData');
+    cy.xpath(BTN_ADD_MEASURES, { timeout: ELEMENT_TIMEOUT }).click();
+    // cy.wait('@targetMeasureData');
+  }
+
+  static addMeasures() {
+    cy.log('click on okay button');
+    // cy.intercept('GET', 'api/MeasuresAI/get-target-measure/*').as('targetMeasureData');
+    cy.xpath(ADD_MEASURES_BUTTON, { timeout: ELEMENT_TIMEOUT }).click();
+    // cy.wait('@targetMeasureData');
   }
 
   static clickEditIconTopLevelImprovement(title) {

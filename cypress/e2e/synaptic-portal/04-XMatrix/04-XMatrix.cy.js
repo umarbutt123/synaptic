@@ -19,6 +19,7 @@ And(/^I click on create X-Matrix button$/, () => {
 });
 
 And(/^I click on edit X-Matrix button$/, () => {
+  cy.wait(1500);
   XMatrixPage.clickOnEditXMatrixButton();
 });
 
@@ -68,6 +69,7 @@ Then(/^I click on save progress button$/, () => {
 });
 
 Then(/^I validate strategic objective is visible on graph "([^"]*)"$/, (title) => {
+  cy.reload();
   XMatrixPage.validateStrategicObjective(title);
 });
 
@@ -104,11 +106,15 @@ And(/^I click on next quadrant button$/, () => {
   XMatrixPage.clickNextQuadrantButton();
 });
 
+And(/^I click on skip for now button$/, () => {
+  XMatrixPage.clickSkipForNowButton();
+});
+
 And(/^I click on add new annual objective button$/, () => {
   XMatrixPage.clickAddNewAnnualObjectiveButton();
 });
 
-And(/^I click on connect strategic objective button$/, (strategicObjective) => {
+And(/^I click on connect strategic objective button "([^"]*)"$/, (strategicObjective) => {
   XMatrixPage.connectStrategicObjective(strategicObjective);
 });
 
@@ -156,23 +162,57 @@ And(/^I click on connect annual strategic objective button "([^"]*)"$/, (annualS
   XMatrixPage.connectAnnualStrategicObjective(annualStrategicObjective);
 });
 
+And(/^I click on connect an improvement Priority button "([^"]*)"$/, (annualStrategicObjective) => {
+  XMatrixPage.connectImprovementPriority(annualStrategicObjective);
+});
+
 And(/^I click on add new priority button$/, () => {
   XMatrixPage.clickAddNewPriorityButton();
+});
+
+And(/^I click on add new target button$/, () => {
+  XMatrixPage.clickAddNewTargetButton();
 });
 
 Then(/^I click on save and exit top level improvement button$/, () => {
   XMatrixPage.clickSaveAndExitTopLevelImprovementButton();
 });
 
+Then(/^I click on save and exit targets button$/, () => {
+  XMatrixPage.clickSaveAndExitTargetsButton();
+});
+
 Then(/^I validate top level improvement is visible on graph "([^"]*)"$/, (title) => {
+  cy.reload();
   XMatrixPage.validateTopLevelImprovement(title);
+});
+
+Then(/^I validate target is visible on graph "([^"]*)"$/, (title) => {
+  XMatrixPage.validateTarget(title);
 });
 
 And(/^I click on okay button$/, () => {
   XMatrixPage.clickOkayButton();
 });
 
+And(/^I click on add measures button$/, () => {
+  cy.wait(1000);
+  XMatrixPage.clickAddMeasuresButton();
+});
+
+And(/^I add measures$/, () => {
+  cy.wait(1000);
+  XMatrixPage.clickNextQuadrantButton();
+  XMatrixPage.clickNextQuadrantButton();
+  XMatrixPage.clickNextQuadrantButton();
+  XMatrixPage.clickSkipForNowButton();
+  XMatrixPage.clickNextQuadrantButton();
+  XMatrixPage.clickAddMeasuresButton();
+  XMatrixPage.addMeasures();
+});
+
 And(/^I click on edit icon on top level improvement "([^"]*)"$/, (title) => {
+  cy.wait(1000);
   XMatrixPage.clickEditIconTopLevelImprovement(title);
 });
 
