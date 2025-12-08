@@ -24,6 +24,8 @@ When(/^I enter details having following parameters "([^"]*)" "([^"]*)"$/, (probl
   A3MatrixPage.fillProblemStatement(problemStatement);
   cy.log("Enter description")
   A3MatrixPage.fillProblemDescription(problemDescription);
+  cy.log("Click on create solutions button")
+  A3MatrixPage.clickOnCreateSolutionsButton();
 });
 
 

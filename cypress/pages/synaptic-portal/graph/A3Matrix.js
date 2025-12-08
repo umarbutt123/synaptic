@@ -46,6 +46,10 @@ class XMatrixPage {
     }
   }
 
+  static clickOnCreateSolutionsButton() {
+    cy.xpath(CREATE_SOLUTION_BTN, { timeout: ELEMENT_TIMEOUT }).click();
+  }
+
   static clickOnA3Matrix(title) {
     cy.log('click on a3 matrix');
     cy.xpath(`//span[text()='${title}']`, { timeout: ELEMENT_TIMEOUT }).click();
@@ -84,7 +88,7 @@ class XMatrixPage {
   clickonEditButton
 
   static fillTitle(subTitle, title) {
-    if (subTitle === "Objective:") {
+    if (subTitle === "Objective:" || subTitle === "Background:" || subTitle === "Significance:") {
       if (title !== "") {
         cy.xpath(`(//div[contains(.,'${subTitle}')]/following::textarea)[2]`, { timeout: ELEMENT_TIMEOUT }).clear().type(title);
       }
@@ -94,18 +98,18 @@ class XMatrixPage {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[4]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
-       else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
+    else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[6]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
-    }  
+    }
 
     else if (subTitle === "Analysis:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[5]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
-    else if (subTitle === "SuggestedActions:") {
+    else if (subTitle === "Suggested Actions:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[7]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
@@ -116,7 +120,7 @@ class XMatrixPage {
   static EditText(subTitle, title) {
     if (subTitle === "Objective:" || subTitle === "Background:" || subTitle === "Significance:") {
       if (title !== "") {
-        
+
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[2]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
@@ -125,18 +129,18 @@ class XMatrixPage {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[4]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
-       else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
+    else if (subTitle === "Actions:" || subTitle === "Goals:" || subTitle === "Post-Implementation Checks:" || subTitle === "Actions to Sustain Improvements:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[6]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
-    }  
+    }
 
     else if (subTitle === "Analysis:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[5]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }
     }
-    else if (subTitle === "SuggestedActions:") {
+    else if (subTitle === "Suggested Actions:") {
       if (title !== "") {
         cy.xpath(`//div[@class='block-heading' and contains(text(),'${subTitle}')]/following::textarea[7]`, { timeout: ELEMENT_TIMEOUT }).type(title);
       }

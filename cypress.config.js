@@ -20,7 +20,7 @@ module.exports = defineConfig({
     "runMode": 1,
     // Configure retry attempts for `cypress open`
     // Default is 0
-    "openMode": 1
+    "openMode": 0
   },
   "reporterOptions": {
     "reporterEnabled": "mochawesome",
