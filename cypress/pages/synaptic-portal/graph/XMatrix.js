@@ -150,6 +150,9 @@ class XMatrixPage {
   }
 
   static enterComment(comment) {
+    cy.wait(1000);
+    cy.xpath('//textarea[@placeholder="Add a comment..."]', { timeout: ELEMENT_TIMEOUT }).click();
+    cy.wait(1000);
     cy.xpath('//textarea[@placeholder="Add a comment..."]', { timeout: ELEMENT_TIMEOUT }).clear().type(comment);
   }
 

@@ -64,7 +64,7 @@ Feature: 05- Bowler Chart Feature
             | EMAIL                             | PASSWORD    | value | button   | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 20.00 | "cancel" | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
-    @TESTBOWLER1 @regression
+    @TESTBOWLER @regression
     Scenario Outline: Color Grading Change according to threshold
         When Provide <EMAIL> and <PASSWORD> and login into system
         And I navigate to the Bowler Chart Page
@@ -76,18 +76,6 @@ Feature: 05- Bowler Chart Feature
         Examples:
             | EMAIL                             | PASSWORD    | value  | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | 100.00 | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
-
-    ## No Longer Valid ##
-    ##@TESTBOWLER @regression
-    ##    Scenario Outline: Error on Non Numeric Value
-    ##        When Provide <EMAIL> and <PASSWORD> and login into system
-    ##        And I navigate to the Bowler Chart Page
-    ##        And I add a "<value>" under 1st measurement
-    ##        Then An Error message must appear
-    ##        Then I logout
-    ##        Examples:
-    ##            | EMAIL                             | PASSWORD    | FIRST_NAME | LAST_NAME | ROLE        | USER_EMAIL       | STATUS   | FIRST_NAME_FIELD | LAST_NAME_FIELD |
-    ##            | "croubayinoulle-3277@yopmail.com" | "Test@1234" | ""         | ""        | "Dashboard" | "test@gmail.com" | "Active" | "First name"     | "Last name"     |
 
     @TESTBOWLER @regression
     Scenario Outline: User is able to add actual values via import file

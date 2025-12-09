@@ -166,9 +166,9 @@ Feature: 04- XMatrix Feature
 
     @xmatrix @regression
     Scenario Outline: User should be able to add target in X-Matrix graph
-        # When Provide <EMAIL> and <PASSWORD> and login into system
-        When Session is enabled for user <EMAIL> and password <PASSWORD>
-        When I navigate to the X-Matrix page
+        When Provide <EMAIL> and <PASSWORD> and login into system
+        # When Session is enabled for user <EMAIL> and password <PASSWORD>
+        # When I navigate to the X-Matrix page
         And I click on edit X-Matrix button
         # And I validate top level improvement screen
         When I enter details having following parameters <TITLE> <DESCRIPTION>
@@ -178,16 +178,16 @@ Feature: 04- XMatrix Feature
         Then I click on save and exit targets button
         Then I click on save progress button
         Then I validate top level improvement is visible on graph <TITLE>
-        # Then I logout
+        Then I logout
         Examples:
             | EMAIL                             | PASSWORD    | TITLE                   | DESCRIPTION                           | TOP_LEVEL_IMPROVEMENT                    | RESOURCE_NAME | RESOURCE_TITLE |
             | "croubayinoulle-3277@yopmail.com" | "Test@1234" | "Automated test target" | "Adding Automated target description" | "Automated top level improvement update" | "John"        | "Team Members" |
 
     @xmatrix @regression
     Scenario Outline: User should be able to add measures in X-Matrix graph
-        # When Provide <EMAIL> and <PASSWORD> and login into system
-        When Session is enabled for user <EMAIL> and password <PASSWORD>
-        When I navigate to the X-Matrix page
+        When Provide <EMAIL> and <PASSWORD> and login into system
+        # When Session is enabled for user <EMAIL> and password <PASSWORD>
+        # When I navigate to the X-Matrix page
         And I click on edit X-Matrix button
         And I add measures
         Examples:

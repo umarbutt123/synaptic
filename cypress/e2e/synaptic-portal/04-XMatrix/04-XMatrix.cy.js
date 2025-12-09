@@ -203,10 +203,15 @@ And(/^I click on add measures button$/, () => {
 And(/^I add measures$/, () => {
   cy.wait(1000);
   XMatrixPage.clickNextQuadrantButton();
+  cy.wait(400);
   XMatrixPage.clickNextQuadrantButton();
+  cy.wait(400);
   XMatrixPage.clickNextQuadrantButton();
+  cy.wait(400);
   XMatrixPage.clickSkipForNowButton();
+  cy.wait(400);
   XMatrixPage.clickNextQuadrantButton();
+  cy.wait(400);
   XMatrixPage.clickAddMeasuresButton();
   XMatrixPage.addMeasures();
 });
